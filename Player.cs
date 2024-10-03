@@ -1,18 +1,17 @@
 using Godot;
+using Godot.Collections;
 using System;
 
-public partial class Player : CharacterBody2D
+public partial class Player : CharacterBody2D, Saveable
 {
 	AnimatedSprite2D animated_sprite_2d;
-	[Export] float speed = 10000;
+	[Export] float speed = 400;
 	bool idle = true;
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		animated_sprite_2d = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
 
@@ -36,5 +35,23 @@ public partial class Player : CharacterBody2D
 		}
 
 		MoveAndSlide();
+	}
+
+	public Godot.Collections.Dictionary<string, Variant> Save()
+	{
+		return new Godot.Collections.Dictionary<string, Variant>()
+		{
+			{ "Filename", SceneFilePath },
+			{ "Parent", GetParent().GetPath() },
+			{ "PosX", Position.X },
+			{ "PosY", Position.Y },
+			{ "Animation", animated_sprite_2d.Animation },
+		};
+	}
+
+	public void Load(Dictionary<string, Variant> nodeData)
+	{
+		Position = new Vector2((float)nodeData["PosX"], (float)nodeData["PosY"]);
+		animated_sprite_2d.Play((string)nodeData["Animation"]);
 	}
 }

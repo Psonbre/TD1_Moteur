@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://1q7egwjrdtlu"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_p1x4x"]
+[ext_resource type="Script" path="res://Player.cs" id="1_qff4a"]
 [ext_resource type="Texture2D" uid="uid://b7emhq7ferh4n" path="res://sokoban_tilesheet.png" id="2_ghseo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2087s"]
@@ -133,9 +133,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_p1x4x")
-speed = 350
+[node name="Player" type="CharacterBody2D" groups=["Persist"]]
+script = ExtResource("1_qff4a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2087s")

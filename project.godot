@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="TP1_Moteur"
-run/main_scene="res://game.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://MainMenu.tscn"
+run/main_loop_type="SubsystemManager"
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -23,6 +24,10 @@ window/vsync/vsync_mode=0
 [dotnet]
 
 project/assembly_name="TP1_Moteur"
+
+[global_group]
+
+Persist=""
 
 [input]
 
