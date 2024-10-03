@@ -7,9 +7,9 @@ using System.Linq;
 
 public partial class SaveManager : Manager
 {
-	public void SaveGame()
+	public void SaveGame(string path)
 	{
-		using var saveFile = Godot.FileAccess.Open("user://savegame.save", Godot.FileAccess.ModeFlags.Write);
+		using var saveFile = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Write);
 
 		var saveNodes = SubsystemManager.Get().Root.GetTree().GetNodesInGroup("Persist");
 		foreach (Node saveNode in saveNodes)
@@ -34,9 +34,9 @@ public partial class SaveManager : Manager
 		}
 	}
 
-	public void LoadGame()
+	public void LoadGame(string path)
 	{
-		if (!Godot.FileAccess.FileExists("user://savegame.save"))
+		if (!Godot.FileAccess.FileExists(path))
 		{
 			return;
 		}
@@ -47,7 +47,7 @@ public partial class SaveManager : Manager
 			saveNode.QueueFree();
 		}
 
-		using var saveFile = Godot.FileAccess.Open("user://savegame.save", Godot.FileAccess.ModeFlags.Read);
+		using var saveFile = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
 
 		while (saveFile.GetPosition() < saveFile.GetLength())
 		{
