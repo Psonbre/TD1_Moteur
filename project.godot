@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="TP1_Moteur"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://Scenes/Levels/MainMenu.tscn"
 run/main_loop_type="SubsystemManager"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1150
+window/size/viewport_height=650
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 

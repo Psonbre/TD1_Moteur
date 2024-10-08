@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://1q7egwjrdtlu"]
 
-[ext_resource type="Script" path="res://Player.cs" id="1_qff4a"]
+[ext_resource type="Script" path="res://Scritps/Player.cs" id="1_qff4a"]
 [ext_resource type="Texture2D" uid="uid://b7emhq7ferh4n" path="res://sokoban_tilesheet.png" id="2_ghseo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2087s"]

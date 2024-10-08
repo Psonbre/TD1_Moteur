@@ -6,11 +6,14 @@ public partial class Player : CharacterBody2D, Saveable
 {
 	AnimatedSprite2D animated_sprite_2d;
 	[Export] float speed = 400;
+	[Export] InventoryUI inventory_ui;
+	Inventory inventory;
 	bool idle = true;
 	public override void _Ready()
 	{
 		animated_sprite_2d = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-	}
+		inventory = new Inventory(this, inventory_ui);
+    }
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -46,12 +49,22 @@ public partial class Player : CharacterBody2D, Saveable
 			{ "PosX", Position.X },
 			{ "PosY", Position.Y },
 			{ "Animation", animated_sprite_2d.Animation },
-		};
+            { "Inventory", inventory.Save() },
+			{ "InventoryUI", inventory_ui.GetPath() }
+        };
 	}
 
 	public void Load(Dictionary<string, Variant> nodeData)
 	{
 		Position = new Vector2((float)nodeData["PosX"], (float)nodeData["PosY"]);
 		animated_sprite_2d.Play((string)nodeData["Animation"]);
+		inventory.Load((Dictionary<string, Variant>)nodeData["Inventory"]);
+		inventory_ui = GetNode<InventoryUI>((string)nodeData["InventoryUI"]);
+		inventory.SetUI(inventory_ui);
 	}
+
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
 }

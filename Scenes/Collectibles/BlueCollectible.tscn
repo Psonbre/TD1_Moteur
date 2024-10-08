@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpuougr4be5nv"]
+
+[ext_resource type="Script" path="res://Scritps/Collectible.cs" id="1_exj6y"]
+[ext_resource type="Texture2D" uid="uid://b7emhq7ferh4n" path="res://sokoban_tilesheet.png" id="2_01hqi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyxdv"]
+atlas = ExtResource("2_01hqi")
+region = Rect2(768, 192, 64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwvc3"]
+
+[node name="BlueCollectible" type="Area2D" groups=["Persist"]]
+input_pickable = false
+script = ExtResource("1_exj6y")
+inventory_icon = SubResource("AtlasTexture_lyxdv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jwvc3")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(0, -2)
+texture = SubResource("AtlasTexture_lyxdv")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6c0gr67lxkny"]
+
+[ext_resource type="Script" path="res://Scritps/InventoryUI.cs" id="1_6kijf"]
+[ext_resource type="PackedScene" uid="uid://bcw3suaj4p4uk" path="res://Scenes/ui_inventory_slot.tscn" id="2_5l0rw"]
+
+[node name="InventoryUI" type="HBoxContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = 246.0
+offset_right = 30.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_6kijf")
+inventory_slot_scene = ExtResource("2_5l0rw")

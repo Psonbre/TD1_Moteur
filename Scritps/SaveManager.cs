@@ -1,9 +1,4 @@
 using Godot;
-using Godot.Collections;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 public partial class SaveManager : Manager
 {
@@ -69,5 +64,10 @@ public partial class SaveManager : Manager
 			((Saveable)newObject).Load(nodeData);
 		}
 	}
+
+    public bool SaveExists(string savePath)
+    {
+        return Godot.FileAccess.FileExists(savePath);
+    }
 }
 
